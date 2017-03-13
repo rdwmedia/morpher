@@ -1,0 +1,10 @@
+#! /bin/sh
+#
+# Created by configure
+
+CFLAGS='-O2' \
+CXXFLAGS='-O2 -std=c++11' \
+LDFLAGS='-static' \
+'./configure' \
+'--enable-hello' \
+"$@"

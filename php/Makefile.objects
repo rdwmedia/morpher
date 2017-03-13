@@ -1,0 +1,10 @@
+bsdua/utf8.lo: /home/dostus/projects/phpProjects/morpher/php/bsdua/utf8.c
+	$(LIBTOOL) --mode=compile $(CC) -D_UNICODE -I. -I/home/dostus/projects/phpProjects/morpher/php $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/dostus/projects/phpProjects/morpher/php/bsdua/utf8.c -o bsdua/utf8.lo 
+hello.lo: /home/dostus/projects/phpProjects/morpher/php/hello.cpp
+	$(LIBTOOL) --mode=compile $(CXX) -D_UNICODE -I. -I/home/dostus/projects/phpProjects/morpher/php $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /home/dostus/projects/phpProjects/morpher/php/hello.cpp -o hello.lo 
+$(phplibdir)/hello.la: ./hello.la
+	$(LIBTOOL) --mode=install cp ./hello.la $(phplibdir)
+
+./hello.la: $(shared_objects_hello) $(HELLO_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_hello) $(HELLO_SHARED_LIBADD)
+
